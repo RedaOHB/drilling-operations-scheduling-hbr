@@ -89,7 +89,7 @@ $$
    \left\{
          \begin{array}{lr}
  
- \sum_{j \in P, j \neq 0} Y_{0jk}  = 1 & \hspace{1cm} \forall k \in R\\ \\
+ \sum_{j \in P, j \neq 0} Y_{0jk}  = 1 & \hspace{1cm} \forall k \in R <br>
  \sum_{k \in R} \sum_{j \in P} Y_{ijk}  = 1 & \hspace{1cm}  \forall i \in P , i \neq 0\\ \\
  \sum_{k \in R} \sum_{i \in P} Y_{ijk}  = 1 & \hspace{1cm}  \forall j \in P , j \neq 0\\ \\
  \sum_{i \in P, i \neq 0} Y_{i0k}  = 1 & \hspace{1cm}  \forall k \in R\\ \\
