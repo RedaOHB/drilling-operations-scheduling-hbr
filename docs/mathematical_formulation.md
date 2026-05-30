@@ -52,7 +52,7 @@ $$\text{min } Z = \max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace$$
  
 + Each rig departs from the dummy depot to drill exactly one first well (the choice of which well is left to the optimizer):
 
-$$\sum_{j \in P, j \neq 0} Y_{0jk} = 1  \hspace{0.8cm} \forall k \in R \hspace*{3cm}(1)$$
+$$\sum_{j \in P, j \neq 0} Y_{0jk} = 1  \hspace{0.8cm} \forall k \in R \hspace{3cm}(1)$$
 
 + Each well must be drilled exactly once:
 
@@ -89,17 +89,16 @@ $$
    \left\{
          \begin{array}{lr}
  
- \sum_{j \in P, j \neq 0} Y_{0jk}  = 1 & \hspace*{1cm} \forall k \in R\\ \\
- \sum_{k \in R} \sum_{j \in P} Y_{ijk}  = 1 & \hspace*{1cm}  \forall i \in P , i \neq 0\\ \\
- \sum_{k \in R} \sum_{i \in P} Y_{ijk}  = 1 & \hspace*{1cm}  \forall j \in P , j \neq 0\\ \\
- \sum_{i \in P, i \neq 0} Y_{i0k}  = 1 & \hspace*{1cm}  \forall k \in R\\ \\
- Y_{iik}  = 0 & \hspace*{1cm} \forall i \in P , \forall k \in R \\ \\
-\sum_{k \in R} \left( Y_{ijk} + Y_{jik} \right)  \leq 1 & \hspace*{1cm}  \forall i,j \in P \\ \\
-\sum_{i \in P} Y_{ilk}  = \sum_{j \in P} Y_{ljk} & \hspace*{1cm} \forall l \in P , \forall k \in R\\ \\
-Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace*{1cm} \forall i,j \in P , \forall k \in R\\ \\
+ \sum_{j \in P, j \neq 0} Y_{0jk}  = 1 & \hspace{1cm} \forall k \in R\\ \\
+ \sum_{k \in R} \sum_{j \in P} Y_{ijk}  = 1 & \hspace{1cm}  \forall i \in P , i \neq 0\\ \\
+ \sum_{k \in R} \sum_{i \in P} Y_{ijk}  = 1 & \hspace{1cm}  \forall j \in P , j \neq 0\\ \\
+ \sum_{i \in P, i \neq 0} Y_{i0k}  = 1 & \hspace{1cm}  \forall k \in R\\ \\
+ Y_{iik}  = 0 & \hspace{1cm} \forall i \in P , \forall k \in R \\ \\
+\sum_{k \in R} \left( Y_{ijk} + Y_{jik} \right)  \leq 1 & \hspace{1cm}  \forall i,j \in P \\ \\
+\sum_{i \in P} Y_{ilk}  = \sum_{j \in P} Y_{ljk} & \hspace{1cm} \forall l \in P , \forall k \in R\\ \\
+Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace{1cm} \forall i,j \in P , \forall k \in R\\ \\
   \end{array}
              \right}.
-\end{aligned}
 $$
 
 ## Linearization
@@ -122,15 +121,15 @@ $$
 (PL)
    \left\{
          \begin{array}{lr}
-  \sum_{i \in P} \sum_{j \in P} \left( h_{i} + T_{ij} \right) \cdot Y_{ijk} \leq W & \hspace*{1cm} \forall k \in R\\ \\
-  \sum_{j \in P, j \neq 0} Y_{0jk}  = 1 & \hspace*{1cm} \forall k \in R\\ \\
- \sum_{k \in R} \sum_{j \in P} Y_{ijk}  = 1 & \hspace*{1cm}  \forall i \in P , i \neq 0\\ \\
- \sum_{k \in R} \sum_{i \in P} Y_{ijk}  = 1 & \hspace*{1cm}  \forall j \in P , j \neq 0\\ \\
- \sum_{i \in P, i \neq 0} Y_{i0k}  = 1 & \hspace*{1cm}  \forall k \in R\\ \\
- Y_{iik}  = 0 & \hspace*{1cm} \forall i \in P , \forall k \in R \\ \\
-\sum_{k \in R} \left( Y_{ijk} + Y_{jik} \right)  \leq 1 & \hspace*{1cm}  \forall i,j \in P \\ \\
-\sum_{i \in P} Y_{ilk}  = \sum_{j \in P} Y_{ljk} & \hspace*{1cm} \forall l \in P , \forall k \in R\\ \\
-Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace*{1cm} \forall i,j \in P , \forall k \in R\\ \\
+  \sum_{i \in P} \sum_{j \in P} \left( h_{i} + T_{ij} \right) \cdot Y_{ijk} \leq W & \hspace{1cm} \forall k \in R\\ \\
+  \sum_{j \in P, j \neq 0} Y_{0jk}  = 1 & \hspace{1cm} \forall k \in R\\ \\
+ \sum_{k \in R} \sum_{j \in P} Y_{ijk}  = 1 & \hspace{1cm}  \forall i \in P , i \neq 0\\ \\
+ \sum_{k \in R} \sum_{i \in P} Y_{ijk}  = 1 & \hspace{1cm}  \forall j \in P , j \neq 0\\ \\
+ \sum_{i \in P, i \neq 0} Y_{i0k}  = 1 & \hspace{1cm}  \forall k \in R\\ \\
+ Y_{iik}  = 0 & \hspace{1cm} \forall i \in P , \forall k \in R \\ \\
+\sum_{k \in R} \left( Y_{ijk} + Y_{jik} \right)  \leq 1 & \hspace{1cm}  \forall i,j \in P \\ \\
+\sum_{i \in P} Y_{ilk}  = \sum_{j \in P} Y_{ljk} & \hspace{1cm} \forall l \in P , \forall k \in R\\ \\
+Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace{1cm} \forall i,j \in P , \forall k \in R\\ \\
 W \in \mathbb{R}_{+}^{*}\\ \\
   \end{array}
              \right}.
