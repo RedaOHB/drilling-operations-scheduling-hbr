@@ -24,7 +24,8 @@ To better frame the problem, we embedded it within the class of vehicle routing 
 ### Decision Variables
  
 These are binary variables indicating the route taken by each rig in use.<br>
-We define:<br>
+We define:
+
 $$Y_{ijk} =
 \begin{cases}
 1 & \text{if well $j$ is drilled immediately after well $i$ by rig $k$} \\
@@ -33,40 +34,57 @@ $$Y_{ijk} =
  
 ### Objective Function
  
-The total operating time of the $k^{\text{th}}$ rig, $k=1,...,m$, is given by:<br>
-$$t_{k} = \left( \sum_{i \in P} \sum_{j \in P} h_{i} Y_{ijk} \right) + \sum_{i \in P} \sum_{j \in P} T_{ij} \cdot Y_{ijk}$$<br>
+The total operating time of the $k^{\text{th}}$ rig, $k=1,...,m$, is given by:
+
+$$t_{k} = \left( \sum_{i \in P} \sum_{j \in P} h_{i} Y_{ijk} \right) + \sum_{i \in P} \sum_{j \in P} T_{ij} \cdot Y_{ijk}$$
+
 where $\sum_{i \in P} \sum_{j \in P} Y_{ijk}$ represents the number of wells drilled by rig $k$, $k \in R$.
  
-The total project completion time corresponds to the duration required to drill all wells, which equals the finishing time of the last rig to complete its assignment:<br>
-$$\max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace$$<br>
-The objective function is therefore:<br>
+The total project completion time corresponds to the duration required to drill all wells, which equals the finishing time of the last rig to complete its assignment:
+
+$$\max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace$$
+
+The objective function is therefore:
+
 $$\text{min } Z = \max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace$$
  
 ### Constraints
  
 + Each rig departs from the dummy depot to drill exactly one first well (the choice of which well is left to the optimizer):
+
 $$\sum_{j \in P, j \neq 0} Y_{0jk} = 1  \hspace{0.8cm} \forall k \in R \hspace*{3cm}(1)$$
+
 + Each well must be drilled exactly once:
+
 $$\sum_{k \in R} \sum_{j \in P} Y_{ijk} = 1  \hspace{0.8cm} \forall i \in P , i \neq 0 \hspace{2.5cm}(2)$$
+
 $$\sum_{k \in R} \sum_{i \in P} Y_{ijk} = 1  \hspace{0.8cm} \forall j \in P , j \neq 0 \hspace{2.5cm}(3)$$
+
 + Each rig must return to the dummy well:
+
 $$\sum_{i \in P, i \neq 0} Y_{i0k} = 1  \hspace{0.8cm} \forall k \in R \hspace{3cm}(4)$$
+
 + A rig cannot drill the same well twice (no self-loops):
+
 $$Y_{iik} = 0  \hspace{0.8cm} \forall i \in P , \forall k \in R \hspace{3cm}(5)$$
+
 + Travel between two wells occurs in one direction only:
+
 $$\sum_{k \in R} \left( Y_{ijk} + Y_{jik} \right) \leq 1  \hspace{0.8cm} \forall i,j \in P \hspace{2.5cm}(6)$$
+
 + Route continuity (flow conservation):
+
 $$\sum_{i \in P} Y_{ilk} = \sum_{j \in P} Y_{ljk}  \hspace{0.8cm} \forall l \in P , \forall k \in R \hspace{2.7cm}(7)$$
 
 ### Complete Mathematical Model
  
 The full integer linear program is written as:
 
-\begin{aligned}
+$$
   \text{minimize} \quad Z = \max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace
-\end{aligned}
+$$
  
-\begin{aligned}
+$$
 (PL)
    \left\{
          \begin{array}{lr}
@@ -82,7 +100,7 @@ Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace*{1cm} \forall i,j \in P , \forall k 
   \end{array}
              \right}.
 \end{aligned}
-
+$$
 
 ## Linearization
  
