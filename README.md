@@ -24,6 +24,7 @@ drilling-time-optimization-hbr/
 │   ├── heuristics.py          # Nearest Neighbor and Insertion heuristics
 │   ├── metaheuristics.py      # Variable Neighborhood Search (VNS)
 │   ├── utils.py               # Neighbourhood, local search and Time functions
+    ├── Solver_Optimization.py # Optimization with solver 
 │   └── main.py                # Main execution script
 ├── LICENSE
 └── README.md
