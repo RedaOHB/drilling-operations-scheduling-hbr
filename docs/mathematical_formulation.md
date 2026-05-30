@@ -86,14 +86,14 @@ $$
  
 subject to:
  
- $$\sum_{j \in P, j \neq 0} Y_{0jk}  = 1 & \hspace{1cm} \forall k \in R $$
- $$\sum_{k \in R} \sum_{j \in P} Y_{ijk}  = 1 & \hspace{1cm}  \forall i \in P , i \neq 0$$
- $$\sum_{k \in R} \sum_{i \in P} Y_{ijk}  = 1 & \hspace{1cm}  \forall j \in P , j \neq 0$$
- $$4\sum_{i \in P, i \neq 0} Y_{i0k}  = 1 & \hspace{1cm}  \forall k \in R$$
- $$Y_{iik}  = 0 & \hspace{1cm} \forall i \in P , \forall k \in R$$
-$4\sum_{k \in R} \left( Y_{ijk} + Y_{jik} \right)  \leq 1 & \hspace{1cm}  \forall i,j \in P$$
-$4\sum_{i \in P} Y_{ilk}  = \sum_{j \in P} Y_{ljk} & \hspace{1cm} \forall l \in P , \forall k \in R$$
-$$Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace{1cm} \forall i,j \in P , \forall k \in R$$
+ $$\sum_{j \in P, j \neq 0} Y_{0jk}  = 1  \hspace{1cm} \forall k \in R $$
+ $$\sum_{k \in R} \sum_{j \in P} Y_{ijk}  = 1  \hspace{1cm}  \forall i \in P , i \neq 0$$
+ $$\sum_{k \in R} \sum_{i \in P} Y_{ijk}  = 1  \hspace{1cm}  \forall j \in P , j \neq 0$$
+ $$4\sum_{i \in P, i \neq 0} Y_{i0k}  = 1  \hspace{1cm}  \forall k \in R$$
+ $$Y_{iik}  = 0  \hspace{1cm} \forall i \in P , \forall k \in R$$
+$4\sum_{k \in R} \left( Y_{ijk} + Y_{jik} \right)  \leq 1  \hspace{1cm}  \forall i,j \in P$$
+$4\sum_{i \in P} Y_{ilk}  = \sum_{j \in P} Y_{ljk}  \hspace{1cm} \forall l \in P , \forall k \in R$$
+$$Y_{ijk} \in \lbrace 0 , 1 \rbrace  \hspace{1cm} \forall i,j \in P , \forall k \in R$$
 
 
 ## Linearization
