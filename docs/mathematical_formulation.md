@@ -62,11 +62,11 @@ $$\sum_{i \in P} Y_{ilk} = \sum_{j \in P} Y_{ljk}  \hspace{0.8cm} \forall l \in 
  
 The full integer linear program is written as:
 ```Latex
-$$
+\begin{aligned}
   \text{minimize} \quad Z = \max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace
-$$
+\end{aligned}
  
-$$
+\begin{aligned}
 (PL)
    \left\{
          \begin{array}{lr}
@@ -81,7 +81,7 @@ $$
 Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace*{1cm} \forall i,j \in P , \forall k \in R\\ \\
   \end{array}
              \right.
-$$
+\end{aligned}
 ```
 
 ## Linearization
