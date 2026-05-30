@@ -87,23 +87,3 @@ $$
 This is specifically a *nearest insertion* heuristic, since at each iteration the well chosen for insertion is the one closest to the current cycle
 
 
-```pseudo
-Algorithm: Nearest Neighbor
-
-Input:
-    P = {1,2,...,n}  // wells
-    R = {1,2,...,m}  // rigs
-
-while |P| >= |R| do
-    for each rig k ∈ R do
-        assign nearest well in P to rig k
-        remove assigned well from P
-    end for
-end while
-
-while |P| >= 1 do
-    select a rig k at random
-    assign nearest well in P to rig k
-    remove assigned well from P
-end while
-```
