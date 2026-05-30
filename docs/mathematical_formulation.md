@@ -33,30 +33,30 @@ $$Y_{ijk} =
  
 ### Objective Function
  
-The total operating time of the $k^{\text{th}}$ rig, $k=1,...,m$, is given by:
-$$t_{k} = \left( \sum_{i \in P} \sum_{j \in P} h_{i} Y_{ijk} \right) + \sum_{i \in P} \sum_{j \in P} T_{ij} \cdot Y_{ijk}$$
+The total operating time of the $k^{\text{th}}$ rig, $k=1,...,m$, is given by:<br>
+$$t_{k} = \left( \sum_{i \in P} \sum_{j \in P} h_{i} Y_{ijk} \right) + \sum_{i \in P} \sum_{j \in P} T_{ij} \cdot Y_{ijk}$$<br>
 where $\sum_{i \in P} \sum_{j \in P} Y_{ijk}$ represents the number of wells drilled by rig $k$, $k \in R$.
  
-The total project completion time corresponds to the duration required to drill all wells — which equals the finishing time of the last rig to complete its assignment:
-$$\max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace$$
-The objective function is therefore:
+The total project completion time corresponds to the duration required to drill all wells, which equals the finishing time of the last rig to complete its assignment:<br>
+$$\max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace$$<br>
+The objective function is therefore:<br>
 $$\text{min } Z = \max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace$$
  
 ### Constraints
  
 + Each rig departs from the dummy depot to drill exactly one first well (the choice of which well is left to the optimizer):
-$$\sum_{j \in P, j \neq 0} Y_{0jk} = 1  \hspace*{0.8cm} \forall k \in R \hspace*{3cm}(1)$$
+$$\sum_{j \in P, j \neq 0} Y_{0jk} = 1  \hspace{0.8cm} \forall k \in R \hspace*{3cm}(1)$$
 + Each well must be drilled exactly once:
-$$\sum_{k \in R} \sum_{j \in P} Y_{ijk} = 1  \hspace*{0.8cm} \forall i \in P , i \neq 0 \hspace*{2.5cm}(2)$$
-$$\sum_{k \in R} \sum_{i \in P} Y_{ijk} = 1  \hspace*{0.8cm} \forall j \in P , j \neq 0 \hspace*{2.5cm}(3)$$
+$$\sum_{k \in R} \sum_{j \in P} Y_{ijk} = 1  \hspace{0.8cm} \forall i \in P , i \neq 0 \hspace{2.5cm}(2)$$
+$$\sum_{k \in R} \sum_{i \in P} Y_{ijk} = 1  \hspace{0.8cm} \forall j \in P , j \neq 0 \hspace{2.5cm}(3)$$
 + Each rig must return to the dummy well:
-$$\sum_{i \in P, i \neq 0} Y_{i0k} = 1  \hspace*{0.8cm} \forall k \in R \hspace*{3cm}(4)$$
+$$\sum_{i \in P, i \neq 0} Y_{i0k} = 1  \hspace{0.8cm} \forall k \in R \hspace{3cm}(4)$$
 + A rig cannot drill the same well twice (no self-loops):
-$$Y_{iik} = 0  \hspace*{0.8cm} \forall i \in P , \forall k \in R \hspace*{3cm}(5)$$
+$$Y_{iik} = 0  \hspace{0.8cm} \forall i \in P , \forall k \in R \hspace{3cm}(5)$$
 + Travel between two wells occurs in one direction only:
-$$\sum_{k \in R} \left( Y_{ijk} + Y_{jik} \right) \leq 1  \hspace*{0.8cm} \forall i,j \in P \hspace*{2.5cm}(6)$$
+$$\sum_{k \in R} \left( Y_{ijk} + Y_{jik} \right) \leq 1  \hspace{0.8cm} \forall i,j \in P \hspace{2.5cm}(6)$$
 + Route continuity (flow conservation):
-$$\sum_{i \in P} Y_{ilk} = \sum_{j \in P} Y_{ljk}  \hspace*{0.8cm} \forall l \in P , \forall k \in R \hspace*{2.7cm}(7)$$
+$$\sum_{i \in P} Y_{ilk} = \sum_{j \in P} Y_{ljk}  \hspace{0.8cm} \forall l \in P , \forall k \in R \hspace{2.7cm}(7)$$
 
 ### Complete Mathematical Model
  
@@ -80,7 +80,7 @@ $$
 \sum_{i \in P} Y_{ilk}  = \sum_{j \in P} Y_{ljk} & \hspace*{1cm} \forall l \in P , \forall k \in R\\ \\
 Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace*{1cm} \forall i,j \in P , \forall k \in R\\ \\
   \end{array}
-             \right.
+             \right}.
 $$
 
 ## Linearization
@@ -91,7 +91,7 @@ $$\text{minimize} \quad Z = W$$
  
 with the additional constraint:
  
-$$ \sum_{i \in P} \sum_{j \in P} \left( h_{i} + T_{ij} \right) \cdot Y_{ijk} \leq W \hspace*{1cm}, \forall k \in R$$
+$$ \sum_{i \in P} \sum_{j \in P} \left( h_{i} + T_{ij} \right) \cdot Y_{ijk} \leq W \hspace{1cm}, \forall k \in R$$
  
 By incorporating this linearization constraint and updating the objective, we obtain the following integer linear program that fully models our problem:
  
@@ -114,7 +114,7 @@ $$
 Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace*{1cm} \forall i,j \in P , \forall k \in R\\ \\
 W \in \mathbb{R}_{+}^{*}\\ \\
   \end{array}
-             \right.
+             \right}.
 $$
  
 ## Model Size
