@@ -61,7 +61,7 @@ $$\sum_{i \in P} Y_{ilk} = \sum_{j \in P} Y_{ljk}  \hspace{0.8cm} \forall l \in 
 ### Complete Mathematical Model
  
 The full integer linear program is written as:
- 
+```Latex
 $$
   \text{minimize} \quad Z = \max_{k=1}^{m} \left\lbrace t_{k} \right\rbrace
 $$
@@ -80,8 +80,9 @@ $$
 \sum_{i \in P} Y_{ilk}  = \sum_{j \in P} Y_{ljk} & \hspace*{1cm} \forall l \in P , \forall k \in R\\ \\
 Y_{ijk} \in \lbrace 0 , 1 \rbrace & \hspace*{1cm} \forall i,j \in P , \forall k \in R\\ \\
   \end{array}
-             \right}.
+             \right.
 $$
+```
 
 ## Linearization
  
