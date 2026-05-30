@@ -3,14 +3,15 @@ import copy
 import random
 
 def Time(displacements, devices_travel_time, well_drilling_time):
-    
-    m = len(displacements)  # number of devices
+     
+    m = len(displacements)  # number of devices  
 
     drillig_time = np.zeros(m)
 
     for k in range(m):
         for j in range(len(displacements[k])-1):
             drillig_time[k] += devices_travel_time[displacements[k][j]][displacements[k][j+1]] + well_drilling_time[displacements[k][j+1]-1]
+        drillig_time[k] += devices_travel_time[displacements[k][len(displacements[k])-1]][0]
 
 
     return drillig_time

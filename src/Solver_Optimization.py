@@ -9,7 +9,6 @@ def solve_PL(P, R, h, T):
 
     m = Model()
 
-    
     # --------------- Variables
     Y = m.addVars(P, P, R, vtype=GRB.BINARY, name="Y")
     W = m.addVar(vtype=GRB.CONTINUOUS, lb=0, name="W")

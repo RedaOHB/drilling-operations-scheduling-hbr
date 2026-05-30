@@ -6,9 +6,9 @@ Since the discovery of oil in 1956 in the Algerian Sahara, in the In Amenas regi
  
 ## Context
  
-The results obtained at the end of the exploration phase (February 15, 2018) show that the drilling time for the wells in this phase is far from negligible — and after production rate, it stands as one of the most critical parameters for the project operator.
+The results obtained at the end of the exploration phase (February 15, 2018) show that the drilling time for the wells in this phase is far from negligible, and after production rate, it stands as one of the most critical parameters for the project operator.
  
-Drilling rigs are used to bore the wells located in this region, with each well assigned to a single rig. Every rig is first directed to its starting position — its initial well — where work begins. Once a well has been fully drilled over a given period (measured in days) without interruption, the rig is moved to the next well. Such a move takes several days, depending on the distance between wells.
+Drilling rigs are used to bore the wells located in this region, with each well assigned to a single rig. Every rig is first directed to its starting position where work begins. Once a well has been fully drilled over a given period (measured in days) without interruption, the rig is moved to the next well. Such a move takes several days, depending on the distance between wells.
  
 ## Problem Statement
  

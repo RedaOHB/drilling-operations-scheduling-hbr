@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import random
+from utils import Time
 
 
 
@@ -32,7 +33,6 @@ def nearest_neighbor(travel_time, drilling, M):
     for i in range(1,M+1): 
         displacements[i-1].append(int(index[i]))  # assigns the M devices to the m wells closest to the depot
         Wells.remove(index[i])  # removes wells that have already been drilled from the list or set
-        drilling_time[i-1] += devices_travel_time[0, int(index[i])] + int(well_drilling_time[int(index[i])-1])
         for j in range(N+1):  # sets the travel time to infinity between the newly added well in the sequence and all other wells
             devices_travel_time[j][int(index[i])] = 1000
 
@@ -44,24 +44,22 @@ def nearest_neighbor(travel_time, drilling, M):
     while len(Wells) >= M:             
         for k in range(M):
             j = len(displacements[k])  # selects the last well drilled by device k
-            #x = devices_travel_time[int(displacements[k][j-1])].index(min(devices_travel_time[int(displacements[k][j-1])])) # selects the well that is closest in travel time
             x = np.argmin(devices_travel_time[int(displacements[k][j-1])])
             displacements[k].append(int(x))  # adds the selected well to the current drilling sequence 
             Wells.remove(int(x))  # removes the selected well from the set of available wells
-            drilling_time[k] += min(devices_travel_time[int(displacements[k][j-1])]) + int(well_drilling_time[int(x)-1])
             for i in range(N+1):
                 devices_travel_time[i][x] = 1000  
 
     while len(Wells) >= 1:
         k = random.randrange(0, M) 
         j = len(displacements[k])  # selects the last well drilled by device k
-        #x = devices_travel_time[int(displacements[k][j-1])].index(min(devices_travel_time[int(displacements[k][j-1])]))  # selects the well that is closest in travel time
         x = np.argmin(devices_travel_time[int(displacements[k][j-1])])
         displacements[k].append(int(x))  # adds the selected well to the current drilling sequence 
         Wells.remove(int(x))  # removes the selected well from the set of available wells
-        drilling_time[k] += min(devices_travel_time[int(displacements[k][j-1])]) + int(well_drilling_time[int(x)-1])
         for i in range(N+1):  
                 devices_travel_time[i][x] = 1000
+
+    drilling_time = Time(displacements, devices_travel_time, well_drilling_time)
     
     Total_time = np.max(drilling_time)   # total time of drilling     
     
@@ -166,11 +164,9 @@ def insertion(travel_time, drilling, M):
         for i in range(N+1):
             devices_travel_time[i][z2] = 1000
         
-    for k in range(M):
-        for j in range(len(displacements[k])-1):
-            drilling_time[k] += T[displacements[k][j]][displacements[k][j+1]] + well_drilling_time[displacements[k][j+1]-1]
 
-    
+    drilling_time = Time(displacements, T, well_drilling_time)
+
     Total_time = np.max(drilling_time)
 
     return displacements, Total_time

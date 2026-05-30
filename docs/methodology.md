@@ -2,7 +2,7 @@
  
 Several methods exist for solving optimization problems in general, and combinatorial optimization problems in particular. Each of these methods has its own way of operating, along with its own set of assumptions, advantages, and limitations.
  
-In this work, we focus specifically on the class of discrete optimization problems with binary variables. The instances of our problem can in principle be solved using exact methods; however, their main drawback is that they require an unreasonable amount of computation time as the instance size grows. For this reason, approximate methods are a more practical choice — they yield good-quality solutions within a significantly reduced runtime.
+In this work, we focus specifically on the class of discrete optimization problems with binary variables. The instances of our problem can in principle be solved using exact methods; however, their main drawback is that they require an unreasonable amount of computation time as the instance size grows. For this reason, approximate methods are a more practical choice, they yield good-quality solutions within a significantly reduced runtime.
  
 Since the problem studied in this thesis can be regarded as a vehicle routing problem, it inherits the same computational complexity as that class of problems.
  
@@ -49,9 +49,9 @@ $$
   \end{array}
 $$
 
-#### 2. *Insertion Heuristic*
+#### 2. *Insertion Heuristic*  
  
-Similarly to the previous heuristic, this method starts by building $m$ cycles of length $2$, each connecting the dummy well to the closest available well. Rigs are then selected in turn, and for each one, the uninserted well closest to that rig's current cycle is identified. Once such a well, denoted $k$ is found, it is inserted between two consecutive wells $i$ and $j$ in the cycle in a way that minimizes the additional travel distance ($T_{ik} + T_{kj} + T_{ij}$ minimum). This continues until the number of rigs exceeds the number of remaining wells, at which point rigs are selected randomly and the nearest insertion process continues until all wells have been assigned.
+Similarly to the previous heuristic, this method starts by building $m$ cycles of length $2$, each connecting the dummy well to the closest available well. Rigs are then selected in turn, and for each one, the uninserted well closest to that rig's current cycle is identified. Once such a well, denoted $k$ is found, it is inserted between two consecutive wells $i$ and $j$ in the cycle in a way that minimizes the additional travel time ($T_{ik} + T_{kj} + T_{ij}$ minimum). This continues until the number of rigs exceeds the number of remaining wells, at which point rigs are selected randomly and the nearest insertion process continues until all wells have been assigned.
 
 $$
   \begin{array}{l} 

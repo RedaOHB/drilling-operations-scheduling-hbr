@@ -1,6 +1,6 @@
 import numpy as np
 import copy
-from src.utils import neighborhood, Time, local_search
+from utils import neighborhood, Time, local_search
 
 
 def variable_neighborhood_search(displacements, devices_travel_time, well_drilling_time):
@@ -9,7 +9,7 @@ def variable_neighborhood_search(displacements, devices_travel_time, well_drilli
     k_max = 3
     iteration = 1
 
-    while iteration <= 1000:
+    while iteration <= 5000:
         k = 1
 
         while (k <= k_max):

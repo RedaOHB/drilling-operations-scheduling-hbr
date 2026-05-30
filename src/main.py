@@ -19,14 +19,14 @@ well_drilling_time = well_drilling_time[:,1]
 
 displacements, total_time = insertion(travel_time, drilling, M)
 
-X = variable_neighborhood_search(displacements, devices_travel_time, well_drilling_time) 
-
-print(displacements)     
+print(displacements)
 print(total_time)
 
-print(X)
-F = np.max(Time(X, devices_travel_time, well_drilling_time))
-print(F)
+X = variable_neighborhood_search(displacements, devices_travel_time, well_drilling_time) 
+
+
+print(X[0])
+print(X[1])
 
 
 
