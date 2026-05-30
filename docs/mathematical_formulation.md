@@ -112,9 +112,9 @@ $$
   \text{minimize} \quad Z = W
 $$
  
-sunject to:
+subject to:
 
-  $$\sum_{i \in P} \sum_{j \in P} \left( h_{i} + T_{ij} \right) \cdot Y_{ijk} \leq W & \hspace{1cm} \forall k \in R$$
+  $$\sum_{i \in P} \sum_{j \in P} \left( h_{i} + T_{ij} \right) \cdot Y_{ijk} \leq W \hspace{1cm} \forall k \in R$$
   $$\sum_{j \in P, j \neq 0} Y_{0jk}  = 1  \hspace{1cm} \forall k \in R$$
  $$\sum_{k \in R} \sum_{j \in P} Y_{ijk}  = 1  \hspace{1cm}  \forall i \in P , i \neq 0$$
  $$\sum_{k \in R} \sum_{i \in P} Y_{ijk}  = 1  \hspace{1cm}  \forall j \in P , j \neq 0$$
