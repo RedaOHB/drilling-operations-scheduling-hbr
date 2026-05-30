@@ -28,7 +28,7 @@ As established earlier, our problem can be reduced to an uncapacitated vehicle r
 Each route begins with a move from the dummy well to the closest available well. The heuristic builds all routes successively: each rig in turn is assigned the well closest to its last assigned well. This continues until the number of rigs exceeds the number of remaining wells, at which point rigs are selected randomly, each time assigning the nearest undrilled well, until all wells have been assigned.
 
 $$
-  
+  \begin{array}{l}
     \text{-------------------------------------------------------------------------------------}\\
     \text{Pseudocode: Nearest Neighbor}\\ 
     \text{-------------------------------------------------------------------------------------}\\
@@ -46,7 +46,7 @@ $$
     \hspace{1cm}- \text{Remove that well from $P$.}\\
     \textit{end while}\\
     \text{-------------------------------------------------------------------------------------}\\
-  
+  \end{array}{l}
 $$
 
 #### 2. *Insertion Heuristic*  
@@ -85,3 +85,25 @@ $$
 $$
 
 This is specifically a *nearest insertion* heuristic, since at each iteration the well chosen for insertion is the one closest to the current cycle
+
+
+```pseudo
+Algorithm: Nearest Neighbor
+
+Input:
+    P = {1,2,...,n}  // wells
+    R = {1,2,...,m}  // rigs
+
+while |P| >= |R| do
+    for each rig k ∈ R do
+        assign nearest well in P to rig k
+        remove assigned well from P
+    end for
+end while
+
+while |P| >= 1 do
+    select a rig k at random
+    assign nearest well in P to rig k
+    remove assigned well from P
+end while
+```
