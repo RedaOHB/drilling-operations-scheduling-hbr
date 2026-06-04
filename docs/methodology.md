@@ -49,41 +49,84 @@ $$
   \end{array}{l}
 $$
 
+```pseudo
+Algorithm: Nearest Neighbor
+---------------------------------------------------------------------------------------------
+
+- Let $P = \lbrace 1, 2,..., n \rbrace$ be the set of wells.
+- Let $R = \lbrace 1, 2,..., m \rbrace$ be the set of rigs.
+
+while |P| >= |R| do
+    for each rig k in R do
+       - Assign the nearest well in P to the last well assigned to rig k.
+       - Remove that well from P.
+    end for
+end while
+
+while |P| >= 1 do
+    - Randomly select a rig k.
+    - Assign the nearest well in P to the last well assigned to rig k.
+    - Remove that well from P.
+end while
+```
+
 #### 2. *Insertion Heuristic*  
  
 Similarly to the previous heuristic, this method starts by building $m$ cycles of length $2$, each connecting the dummy well to the closest available well. Rigs are then selected in turn, and for each one, the uninserted well closest to that rig's current cycle is identified. Once such a well, denoted $k$ is found, it is inserted between two consecutive wells $i$ and $j$ in the cycle in a way that minimizes the additional travel time ($T_{ik} + T_{kj} + T_{ij}$ minimum). This continues until the number of rigs exceeds the number of remaining wells, at which point rigs are selected randomly and the nearest insertion process continues until all wells have been assigned.
 
-$$
-  \begin{array}{l} 
-    \text{-------------------------------------------------------------------------------------}\\
-    \text{Pseudocode: Insertion}\\ 
-    \text{-------------------------------------------------------------------------------------}\\    
-    - \text{Let $P = \lbrace 1, 2,..., n \rbrace$ be the set of wells.}\\
-    - \text{Let $R = \lbrace 1, 2,..., m \rbrace$ be the set of rigs.}\\
-    - \text{Let $C = \lbrace C_{1}, C_{2},..., C_{m}\rbrace$ be the set of cycles.}\\
-    \text{\textit{For each} rig $k \in R$ \textit{do}}\\
-    \hspace{1cm}- \text{Build cycle $C_k$ between the dummy well and the closest well in $P$.}\\
-    \hspace{1cm}- \text{Remove that well from $P$.}\\
-    \textit{end for}\\
-    \text{\textit{While} $|P| \geq |R|$ \textit{do}}\\
-    \hspace{1cm}\text{\textit{For each} rig $k \in R$ \textit{do}}\\
-    \hspace{2cm}- \text{Find $j \in C_{k}$ and $w \in P$ such that $T_{jw}$ is minimum.}\\
-    \hspace{2cm}- \text{Find edge $(i,j)$ in $C_k$ such that $T_{iw} + T_{wj} + T_{ij}$ is minimum.}\\
-    \hspace{2cm}- \text{Insert well $w$ between wells $i$ and $j$ in $C_k$.}\\
-    \hspace{2cm}- \text{Remove well $w$ from $P$.}\\
-    \hspace{1cm}\textit{end for}\\
-    \textit{end while}\\
-    \text{\textit{While} $|P| \geq 1$ \textit{do}}\\
-    \hspace{1cm}- \text{Randomly select a rig $k$.}\\
-    \hspace{1cm}- \text{Find $j \in C_{k}$ and $w \in P$ such that $T_{jw}$ is minimum.}\\
-    \hspace{1cm}- \text{Find edge $(i,j)$ in $C_k$ such that $T_{iw} + T_{wj} + T_{ij}$ is minimum.}\\
-    \hspace{1cm}- \text{Insert well $w$ between wells $i$ and $j$ in $C_k$.}\\
-    \hspace{1cm}- \text{Remove well $w$ from $P$.}\\
-    \textit{end while}\\
-  \text{-------------------------------------------------------------------------------------}\\
-  \end{array}
-$$
+```pseudo
+Algorithm: Insertion
+-----------------------------------------------------------------------------------------
 
-This is specifically a *nearest insertion* heuristic, since at each iteration the well chosen for insertion is the one closest to the current cycle
+- Let $P = {1, 2,..., n} be the set of wells.
+- Let $R = {1, 2,..., m} be the set of rigs.
+- Let $C = {C_1, C_2,..., C_m} be the set of cycles.
+for each rig k in R do
+  - Build cycle C_k between the dummy well and the closest well in P.
+  - Remove that well from P.
+end for
+While |P| >= |R| do
+    for each rig k \in R do
+      - Find j in C_k and w in P such that T_jw is minimum.
+      - Find edge (i,j) in C_k such that T_iw + T_wj + T_ij is minimum.
+      - Insert well w between wells i and j in C_k.
+      - Remove well w from P.
+    end for
+end while
+While |P| >= 1 do
+    - Randomly select a rig k.
+    - Find j in C_k and w in P such that T_jw is minimum.
+    - Find edge (i,j) in C_k such that T_iw + T_wj + T_ij is minimum.
+    - Insert well w between wells i and j in C_k.
+    - Remove well w from P.
+end while
+```
+
+This is specifically a *nearest insertion* heuristic, since at each iteration the well chosen for insertion is the one closest to the current cycle.
+
+
+The drawback of heuristics is that they do not guarantee the optimality of the solutions, which is the case in our study. For this reason, transitioning through a metaheuristic can improve the solution found by the heuristic. 
+
+The metaheuristic we have chosen is the one known as Variable Neighborhood Search. It is based on the change of neighborhood, this change can be performed in the intensification step, which aims to find a local minimum, as well as in the diversification step, which aims to escape a local minimum. Variable Neighborhood Search uses a set of neighborhoods and an initial solution *x*. At each iteration, the method generates a solution *x'* from the current neighborhood, then a local search is applied on *x'* in  order to obtain a solution *x''*. If *x''* is better than *x'*, it is taken as the current solution and the process restarts with the first neighborhood. Otherwise the same steps are repeated with the next neighborhood. 
+
+```pseudo
+Algorithm: Variable Neighborhood Search
+-----------------------------------------------------------------------------------------
+- Let V = {V_1, V_2,..., V_k} be the set of neighborhoods.
+- Let x be the initial solution.
+- i <- 1
+while i <= k
+    - choose a neighboring solution x'' to x within neighborhod V_i.
+    - apply a local search on x' to obtain x''. 
+    if x'' is better than x
+      - x <- x''
+      - i <- 1
+    else i <- i+1
+    ens if 
+end while
+```
+
+**Neighorhood**: a function that provides a neighboring solution to a given solution with a defined neighborhood.
+**Local serach**: a function that applies a local search on a given solution in order to reach a new solution.
 
 
