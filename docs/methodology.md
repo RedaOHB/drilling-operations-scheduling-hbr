@@ -31,8 +31,8 @@ Each route begins with a move from the dummy well to the closest available well.
 Algorithm: Nearest Neighbor
 ---------------------------------------------------------------------------------------------
 
-- Let $P = \lbrace 1, 2,..., n \rbrace$ be the set of wells.
-- Let $R = \lbrace 1, 2,..., m \rbrace$ be the set of rigs.
+- Let P = {1, 2,..., n} be the set of wells.
+- Let R = {1, 2,..., m} be the set of rigs.
 
 while |P| >= |R| do
     for each rig k in R do
@@ -56,9 +56,9 @@ Similarly to the previous heuristic, this method starts by building $m$ cycles o
 Algorithm: Insertion
 -----------------------------------------------------------------------------------------
 
-- Let $P = {1, 2,..., n} be the set of wells.
-- Let $R = {1, 2,..., m} be the set of rigs.
-- Let $C = {C_1, C_2,..., C_m} be the set of cycles.
+- Let P = {1, 2,..., n} be the set of wells.
+- Let R = {1, 2,..., m} be the set of rigs.
+- Let C = {C_1, C_2,..., C_m} be the set of cycles.
 for each rig k in R do
   - Build cycle C_k between the dummy well and the closest well in P.
   - Remove that well from P.
