@@ -27,28 +27,6 @@ As established earlier, our problem can be reduced to an uncapacitated vehicle r
 
 Each route begins with a move from the dummy well to the closest available well. The heuristic builds all routes successively: each rig in turn is assigned the well closest to its last assigned well. This continues until the number of rigs exceeds the number of remaining wells, at which point rigs are selected randomly, each time assigning the nearest undrilled well, until all wells have been assigned.
 
-$$
-  \begin{array}{l}
-    \text{-------------------------------------------------------------------------------------}\\
-    \text{Pseudocode: Nearest Neighbor}\\ 
-    \text{-------------------------------------------------------------------------------------}\\
-    - \text{Let $P = \lbrace 1, 2,..., n \rbrace$ be the set of wells.}\\
-    - \text{Let $R = \lbrace 1, 2,..., m \rbrace$ be the set of rigs.}\\
-    \text{\textit{While} $|P| \geq |R|$ \textit{do}}\\
-    \hspace{1cm}\text{\textit{For each} rig $k \in R$ \textit{do}}\\
-    \hspace{2cm}- \text{Assign the nearest well in $P$ to the last well assigned to rig $k$.}\\
-    \hspace{2cm}- \text{Remove that well from $P$.}\\
-    \hspace{1cm}\textit{end for}\\
-    \textit{end while}\\
-    \text{\textit{While} $|P| \geq 1$ \textit{do}}\\
-    \hspace{1cm}- \text{Randomly select a rig $k$.}\\
-    \hspace{1cm}- \text{Assign the nearest well in $P$ to the last well assigned to rig $k$.}\\
-    \hspace{1cm}- \text{Remove that well from $P$.}\\
-    \textit{end while}\\
-    \text{-------------------------------------------------------------------------------------}\\
-  \end{array}{l}
-$$
-
 ```pseudo
 Algorithm: Nearest Neighbor
 ---------------------------------------------------------------------------------------------
@@ -107,7 +85,11 @@ This is specifically a *nearest insertion* heuristic, since at each iteration th
 
 The drawback of heuristics is that they do not guarantee the optimality of the solutions, which is the case in our study. For this reason, transitioning through a metaheuristic can improve the solution found by the heuristic. 
 
-The metaheuristic we have chosen is the one known as Variable Neighborhood Search. It is based on the change of neighborhood, this change can be performed in the intensification step, which aims to find a local minimum, as well as in the diversification step, which aims to escape a local minimum. Variable Neighborhood Search uses a set of neighborhoods and an initial solution *x*. At each iteration, the method generates a solution *x'* from the current neighborhood, then a local search is applied on *x'* in  order to obtain a solution *x''*. If *x''* is better than *x'*, it is taken as the current solution and the process restarts with the first neighborhood. Otherwise the same steps are repeated with the next neighborhood. 
+### Metaheuristic
+
+#### *Variable Neighborhood Search*
+
+The metaheuristic we have chosen is the one known as *Variable Neighborhood Search*. It is based on the change of neighborhood, this change can be performed in the intensification step, which aims to find a local minimum, as well as in the diversification step, which aims to escape a local minimum. Variable Neighborhood Search uses a set of neighborhoods and an initial solution *x*. At each iteration, the method generates a solution *x'* from the current neighborhood, then a local search is applied on *x'* in  order to obtain a solution *x''*. If *x''* is better than *x'*, it is taken as the current solution and the process restarts with the first neighborhood. Otherwise the same steps are repeated with the next neighborhood. 
 
 ```pseudo
 Algorithm: Variable Neighborhood Search
@@ -126,7 +108,7 @@ while i <= k
 end while
 ```
 
-**Neighorhood**: a function that provides a neighboring solution to a given solution with a defined neighborhood.
+**Neighorhood**: a function that provides a neighboring solution to a given solution with a defined neighborhood.<br>
 **Local serach**: a function that applies a local search on a given solution in order to reach a new solution.
 
 
